@@ -26,7 +26,7 @@ chrome.storage.sync.get("exec_list", function(obj){
             }
             catch(error)
             {
-                console.log('%c[EB JS Code Exec.]%c Failed to add the event. %c(Selector: "'+exec.selector+'", Event: "'+exec.event+'", Error: "'+error+'")', 'background: #222; color: #bada55', 'color:red;', 'background: transparent; color:cyan;');
+                console.log('%c[EB JS Code Exec.]%c Failed to inject the event. %c(Selector: "'+exec.selector+'", Event: "'+exec.event+'", Error: "'+error+'")', 'background: #222; color: #bada55', 'color:red;', 'background: transparent; color:cyan;');
             }
         }
     }

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      *:focus{
+        outline: none !important;
+      }
+      body{
+        font-weight: bold;
+        width: 250px;
+        height: auto;
+        max-height: 359px;
+        overflow: auto;
+        font-family: Arial;
+      }
+      .block { display: block; }
+      .center{ text-align: center; }
+      div#main{
+        display: block;
+      }
+      div.group{
+        display: block;
+        margin-bottom: 10px;
+      }
+      input, select, button{
+        height:22px;
+        border:1px solid #000;
+        border-radius: 6px;
+        padding:2px;
+        vertical-align: middle;
+        background: transparent;
+      }
+      textarea{
+        border:1px solid #000;
+        border-radius: 6px;
+        padding: 5px;
+        resize: vertical;
+        width: 100%;
+        min-height: 75px;
+        font-family: inherit;
+      }
+      textarea#func-body{
+        margin-left: 25px;
+        width: calc(100% - 25px);
+      }
+      button{
+        cursor: pointer;
+        border: 1px solid #000;
+        padding:5px;
+        height: 30px;
+        min-width: 65px;
+      }
+      button:active{
+        color: #aaa;
+        border: 1px solid #aaa;
+      }
+      button#delete{
+        margin-left:5px;
+        color:red;
+        font-weight: bold;
+      }
+      span#log{
+        display: none;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h3 class="center">EB JS Code Exec</h3>
+
+      <div class="group">
+          <span>selector:</span>
+          <input type="text" id="css-selector" placeholder="#main > div.test > ul">
+      </div>
+
+      <div class="group">
+          <span>on:</span>
+          <select id="element-event">
+            <option value="" selected></option>
+            <option value="abort">abort</option>
+            <option value="afterprint">afterprint</option>
+            <option value="animationcancel">animationcancel</option>
+            <option value="animationend">animationend</option>
+            <option value="animationiteration">animationiteration</option>
+            <option value="animationstart">animationstart</option>
+            <option value="audioprocess">audioprocess</option>
+            <option value="auxclick">auxclick</option>
+            <option value="beforeprint">beforeprint</option>
+            <option value="beforeunload">beforeunload</option>
+            <option value="blur">blur</option>
+            <option value="broadcast">broadcast</option>
+            <option value="canplay">canplay</option>
+            <option value="canplaythrough">canplaythrough</option>
+            <option value="change">change</option>
+            <option value="checking">checking</option>
+            <option value="click">click</option>
+            <option value="close">close</option>
+            <option value="complete">complete</option>
+            <option value="compositionend">compositionend</option>
+            <option value="compositionstart">compositionstart</option>
+            <option value="compositionupdate">compositionupdate</option>
+            <option value="contextmenu">contextmenu</option>
+            <option value="copy">copy</option>
+            <option value="cut">cut</option>
+            <option value="dblclick">dblclick</option>
+            <option value="downloading">downloading</option>
+            <option value="drag">drag</option>
+            <option value="dragend">dragend</option>
+            <option value="dragenter">dragenter</option>
+            <option value="dragleave">dragleave</option>
+            <option value="dragover">dragover</option>
+            <option value="dragstart">dragstart</option>
+            <option value="drop">drop</option>
+            <option value="durationchange">durationchange</option>
+            <option value="emptied">emptied</option>
+            <option value="ended">ended</option>
+            <option value="error">error</option>
+            <option value="focus">focus</option>
+            <option value="fullscreenchange">fullscreenchange</option>
+            <option value="fullscreenerror">fullscreenerror</option>
+            <option value="hashchange">hashchange</option>
+            <option value="input">input</option>
+            <option value="invalid">invalid</option>
+            <option value="keydown">keydown</option>
+            <option value="keypress">keypress</option>
+            <option value="keyup">keyup</option>
+            <option value="load">load</option>
+            <option value="loadeddata">loadeddata</option>
+            <option value="loadedmetadata">loadedmetadata</option>
+            <option value="loadend">loadend</option>
+            <option value="loadstart">loadstart</option>
+            <option value="message">message</option>
+            <option value="mousedown">mousedown</option>
+            <option value="mouseenter">mouseenter</option>
+            <option value="mouseleave">mouseleave</option>
+            <option value="mousemove">mousemove</option>
+            <option value="mouseout">mouseout</option>
+            <option value="mouseover">mouseover</option>
+            <option value="mouseup">mouseup</option>
+            <option value="noupdate">noupdate</option>
+            <option value="obsolete">obsolete</option>
+            <option value="offline">offline</option>
+            <option value="online">online</option>
+            <option value="open">open</option>
+            <option value="pagehide">pagehide</option>
+            <option value="pageshow">pageshow</option>
+            <option value="paste">paste</option>
+            <option value="pause">pause</option>
+            <option value="play">play</option>
+            <option value="playing">playing</option>
+            <option value="pointerlockchange">pointerlockchange</option>
+            <option value="pointerlockerror">pointerlockerror</option>
+            <option value="popstate">popstate</option>
+            <option value="progress">progress</option>
+            <option value="ratechange">ratechange</option>
+            <option value="readystatechange">readystatechange</option>
+            <option value="reset">reset</option>
+            <option value="resize">resize</option>
+            <option value="scroll">scroll</option>
+            <option value="seeked">seeked</option>
+            <option value="seeking">seeking</option>
+            <option value="select">select</option>
+            <option value="show">show</option>
+            <option value="stalled">stalled</option>
+            <option value="storage">storage</option>
+            <option value="submit">submit</option>
+            <option value="suspend">suspend</option>
+            <option value="timeout">timeout</option>
+            <option value="timeupdate">timeupdate</option>
+            <option value="transitioncancel">transitioncancel</option>
+            <option value="transitionend">transitionend</option>
+            <option value="transitionrun">transitionrun</option>
+            <option value="transitionstart">transitionstart</option>
+            <option value="unload">unload</option>
+            <option value="updateready">updateready</option>
+            <option value="volumechange">volumechange</option>
+            <option value="waiting">waiting</option>
+            <option value="wheel">wheel</option>
+          </select>
+      </div>
+
+      <div class="group">
+        <span>function(event){  </span>
+        <textarea id="func-body" placeholder="console.log(event);"></textarea>
+        <span>}</span>
+      </div>
+
+      <div class="group">
+        <span style="position: relative;">Total exec on this site: <span id="exec-count">-</span> <span id="exec-list" style="font-weight:bold;font-size:10px;position:absolute;right:-7px;top:-3px;cursor:pointer;">?</span></span>
+      </div>
+
+      <div class="group">
+        <button id="save">Save</button>
+        <button id="delete">Delete</button>
+      </div>
+
+      <div class="group">
+        <span id="log"></span>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

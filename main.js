@@ -310,9 +310,9 @@ get_exec_list(function(obj){
         BASE_URL = base_url;
 
         if(typeof obj.exec_list[base_url] != "undefined") 
-			$_("#exec-count").innerHTML = obj.exec_list[base_url].length;
+            $_("#exec-count").innerHTML = obj.exec_list[base_url].length;
         else 
-			$_("#exec-count").innerHTML = "0";
+            $_("#exec-count").innerHTML = "0";
     });
 });
 

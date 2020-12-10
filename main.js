@@ -296,9 +296,6 @@ function alert_exec_list_event()
 
 //--------------------------------- Main
 // chrome.storage.sync.clear();
-//get_exec_list(function(obj){console.log(obj);})
-
-var is_exec_exist = false;
 
 get_exec_list(function(obj){
     if(isEmpty(obj)) 
@@ -312,14 +309,10 @@ get_exec_list(function(obj){
         var base_url = get_base_url(url);
         BASE_URL = base_url;
 
-        if(typeof obj.exec_list[base_url] != "undefined")
-        {
-            exec_list_len = obj.exec_list[base_url].length;
-
-            $_("#exec-count").innerHTML = exec_list_len;
-            if(exec_list_len > 0) is_exec_exist = true;
-        }
-        else $_("#exec-count").innerHTML = "0";
+        if(typeof obj.exec_list[base_url] != "undefined") 
+			$_("#exec-count").innerHTML = obj.exec_list[base_url].length;
+        else 
+			$_("#exec-count").innerHTML = "0";
     });
 });
 

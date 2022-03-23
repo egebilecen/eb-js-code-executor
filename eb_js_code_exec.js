@@ -18,9 +18,7 @@ chrome.storage.sync.get("exec_list", function(obj){
 
             try
             {
-                document.querySelector(exec.selector).addEventListener(exec.event, function(event){
-                    eval(exec.func_body);
-                });
+                document.querySelector(exec.selector).addEventListener(exec.event, Function(exec.func_body));
         
                 console.log('%c[EB JS Code Exec.]%c Injected the event. %c(Selector: "'+exec.selector+'", Event: "'+exec.event+'")', 'background: #222; color: #bada55', 'color:lime;', 'background: transparent; color:cyan;');
             }
